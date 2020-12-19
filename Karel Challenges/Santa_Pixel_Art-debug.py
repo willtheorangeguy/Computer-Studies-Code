@@ -27,13 +27,13 @@ def front_is_blocked():
     print("Is Karel's front blocked?")
 
 def paint_black():
-    print("Karel painted the sqaure black.")
+    print("Karel painted the square black.")
 
 def paint_red():
-    print("Karel painted the sqaure red.")
+    print("Karel painted the square red.")
 
 def paint_orange():
-    print("Karel painted the sqaure orange.")
+    print("Karel painted the square orange.")
 
 # Moves to the bottom of Santa's face.
 def move_to_outline():
