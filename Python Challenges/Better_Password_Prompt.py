@@ -1,7 +1,6 @@
 # Import Statements
 import getpass # Only works in terminal
 import hashlib # Kind of more secure than just hash()
-import uuid
 
 # Check to See if Logged In
 logged_in = False
