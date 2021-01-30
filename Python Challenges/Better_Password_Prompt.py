@@ -7,15 +7,18 @@ logged_in = False
 
 # Ask for New Password
 pwd = getpass.getpass("Enter new password: ")
-hash_1 = hashlib.md5().update(pwd.encode('utf8'))
+hash_1 = hashlib.md5(pwd.encode()) 
 
 # Confirm Password
 while not(logged_in):
     login = getpass.getpass("Enter password: ")
-    hash_2 = hashlib.md5().update(login.encode('utf8'))
-    if hash_1 == hash_2:
+    hash_2 = hashlib.md5(login.encode()) 
+
+    # Make Sure Passwords Match
+    if hash_1.hexdigest() == hash_2.hexdigest():
         print("You got it!")
         logged_in = True
+        break
     else:
         print("Sorry, that did not match. Please try again.")
         continue
