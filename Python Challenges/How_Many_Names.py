@@ -27,8 +27,8 @@ def print_names():
     print("Middle name(s): " + middle)
     # This checks to make sure they have a middle name, and also makes the
     # output look better, but CodeHS doesn't like it.
-    if list_of_names:
-        print("Middle name(s): " + middle)
+    #if list_of_names:
+    #    print("Middle name(s): " + middle)
     print("Last name: " + str(last))
 
 # Run

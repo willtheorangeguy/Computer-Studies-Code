@@ -6,7 +6,7 @@ def get_index(word):
             if (index >= 0 and index < len(word)) or index == -1:
                 return index
             else:
-                print("Invalid Index!")
+                print("Invalid index")
         except ValueError:
             print("Index must be an integer!")
 
@@ -17,7 +17,7 @@ def get_letter():
         if len(letter) != 1:
             print("Must be exactly one character!")
         elif not letter.islower():
-            print("Character must be lowercase!")
+            print("Character must be a lowercase letter!")
         else:
             return letter
 
