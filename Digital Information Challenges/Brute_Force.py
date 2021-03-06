@@ -1,9 +1,9 @@
 import itertools
 import time
 
-# Ask for password and length
+# Ask for password and calculate length
 user_pwd = input("What is your pin? ")
-length = int(input("What is the length of your pin? "))
+length = len(user_pwd)
 
 # Grab the time
 start = time.time()
