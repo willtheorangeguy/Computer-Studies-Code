@@ -11,7 +11,7 @@ Currently contains code from the following languages:
 Some images from various projects:
 |               |               |                |
 |:-------------:|:-------------:| :-------------:|
-|![alt text](https://raw.githubusercontent.com/willtheorangeguy/Computer-Studies-Code/main/CodeHS_Logo.png?token=AEL5J2USGKNVNQFNUDOMEOLAHHMAK)|![alt text](https://raw.githubusercontent.com/willtheorangeguy/Computer-Studies-Code/main/Ghosts.png?token=AEL5J2SW5MX6RDXFXX5UFWLAHHMCS)|![alt text](https://raw.githubusercontent.com/willtheorangeguy/Computer-Studies-Code/main/Santa_Pixel_Art.png?token=AEL5J2VTYXHQGQ4VOND6XD3AHHMDO)|
+|![alt text](https://raw.githubusercontent.com/willtheorangeguy/Computer-Studies-Code/main/CodeHS_Logo.png?token=AEL5J2XM5L4SXEH52W2RV4TAJUAM6)|![alt text](https://raw.githubusercontent.com/willtheorangeguy/Computer-Studies-Code/main/Ghosts.png?token=AEL5J2VVNRUXPIVRGKJBEBTAJUAYE)|![alt text](https://raw.githubusercontent.com/willtheorangeguy/Computer-Studies-Code/main/Santa_Pixel_Art.png?token=AEL5J2XUWAMCHXK7VSP7WCTAJUAZG)|
 
 
 Scenes from _Tell a Story_:
