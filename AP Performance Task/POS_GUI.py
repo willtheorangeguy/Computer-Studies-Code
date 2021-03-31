@@ -1,9 +1,12 @@
+# Using the 'main' function, builds the window including all the necessary features of a GUI based program.
+
 # Import 
 from tkinter import *
 from POS.menu import *
 import time
 window = Tk()
 
+# Builds the window, including buttons and order item list.
 def main():
     # Window Heading
     window.title("POS GUI")
