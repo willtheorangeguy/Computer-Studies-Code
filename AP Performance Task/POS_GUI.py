@@ -12,6 +12,8 @@ order_items = []
 # List to Hold PRICES
 order_prices = []
 
+# TOTAL FUNCTION NEEDS TO HAVE A COUPON WITH AN IF STATEMENT TO HAVE SELECTION - ITERATION & SELECTION
+
 # Grill Items Backend
 def grill(item, price):
     # Add Item to Lists
@@ -121,3 +123,4 @@ def main():
 
 # Build Window
 main()
+ 
