@@ -1,10 +1,25 @@
 # Using the 'main' function, builds the window including all the necessary features of a GUI based program.
 
 # Import 
-from tkinter import *
-from POS.menu import *
 import time
+from tkinter import *
+
 window = Tk()
+
+# List to Hold ORDER ITEMS
+order_items = []
+
+# List to Hold PRICES
+order_prices = []
+
+# Grill Items Backend
+def grill(item, price):
+    # Add Item to Lists
+    order_items.append(item)
+    order_prices.append(price)
+    # Respond & Debug
+    print(order_items)
+    print(order_prices)
 
 # Builds the window, including buttons and order item list.
 def main():
@@ -16,7 +31,7 @@ def main():
     timer = Label(window, text = (time.strftime("%H:%M:%S")))
 
     # GRILL Buttons
-    grill1 = Button(window, text = "Bacon Cheese Burger", bg = 'orange', command = exit)
+    grill1 = Button(window, text = "Bacon Cheese Burger", bg = 'orange', command = lambda: grill("Bacon Cheese Burger", 9))
     grill2 = Button(window, text = "Ultimate Burger", bg = 'orange', command = exit)
     grill3 = Button(window, text = "Cheeseburger", bg = 'orange', command = exit)
     grill4 = Button(window, text = "Hamburger", bg = 'orange', command = exit)
@@ -49,7 +64,7 @@ def main():
 
     # Order Items
     order = Frame(window)
-    items = Label(order, text = " Start an order!  \n\n\n\n\n\n\n\n\n\n\n\n\n", borderwidth = 2, relief = "groove")
+    items = Label(order, text = " Order Items Here ", borderwidth = 2, relief = "groove")
     total = Label(order, text = "$ " + "0.00")
     
     # Edit Buttons
