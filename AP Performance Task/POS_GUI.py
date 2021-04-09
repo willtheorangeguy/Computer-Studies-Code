@@ -79,22 +79,25 @@ def delete_item():
     num_prices = len(order_prices)
     if num_items and num_prices >= 1:
         # Remove Last Item & Price
-    order_items.pop(-1)
-    order_prices.pop(-1)
-    # Respond & Debug
+        order_items.pop(-1)
+        order_prices.pop(-1)
+    else:
+        print("Cannot remove from list.")
+    # Respond & Debug   
     print(order_items)
     print(order_prices)
 
-def open(type, ammount):
+def open(type, amount):
     global title
     global value
     global enter
     global price
     if type == "food":
-        order_prices.append(ammount)
-    else:
+        order_prices.append(str(amount))
+    elif type == "disc":
         global discount
-        discount = value
+        discount = str(amount)
+        print(str(discount))
     # Respond & Debug
     print(order_items)
     print(order_prices)
@@ -111,7 +114,21 @@ def open_food_ask():
     price = StringVar()
     title = Label(window, text='Enter Value to Add:')
     value = Entry(window, textvariable = price)
-    enter = Button(window, text = 'Accept', command = lambda: open("food", str(value)))
+    enter = Button(window, text = 'Accept', command = lambda: open("food", value.get()))
+
+    title.grid(row = 1, column = 1)
+    value.grid(row = 1, column = 1)
+    enter.grid(row = 2, column = 1)
+
+def open_disc_ask():
+    global title
+    global value
+    global enter
+    global price
+    price = StringVar()
+    title = Label(window, text='Enter Price to Discount:')
+    value = Entry(window, textvariable = price)
+    enter = Button(window, text = 'Accept', command = lambda: open("disc", value.get()))
 
     title.grid(row = 1, column = 1)
     value.grid(row = 1, column = 1)
@@ -167,7 +184,7 @@ def main():
     delete = Button(window, text = "Delete Last", command = delete_item)
     edit = Button(window, text = "Edit Last", command = delete_item)
     open_food = Button(window, text = "Open Price", command = open_food_ask)
-    open_disc = Button(window, text = "Open Discount", command = exit)
+    open_disc = Button(window, text = "Open Discount", command = open_disc_ask)
     payment = Button(window, text = "Take Payment", command = exit)
 
     # Position on Window
