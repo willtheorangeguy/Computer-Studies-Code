@@ -17,6 +17,16 @@ order_prices = []
 discount = 0
 
 # TOTAL FUNCTION NEEDS TO HAVE A COUPON WITH AN IF STATEMENT TO HAVE SELECTION - ITERATION & SELECTION
+def total(items, prices):
+    # Add Items to Item List
+    num_items = len(items)
+    item_list = ""
+    for i in range(num_items):
+        item_list += order_items[(i + 1)]
+        item_list += 
+
+
+    total_price = sum(prices)
 
 # Grill Items Backend
 def grill(item, price):
