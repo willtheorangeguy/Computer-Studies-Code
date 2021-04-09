@@ -3,6 +3,7 @@
 # Import 
 import time
 from tkinter import *
+import tkinter.messagebox as box
 
 window = Tk()
 
@@ -11,6 +12,9 @@ order_items = []
 
 # List to Hold PRICES
 order_prices = []
+
+# Discount for Open Discount Function
+discount = 0
 
 # TOTAL FUNCTION NEEDS TO HAVE A COUPON WITH AN IF STATEMENT TO HAVE SELECTION - ITERATION & SELECTION
 
@@ -23,6 +27,96 @@ def grill(item, price):
     print(order_items)
     print(order_prices)
 
+# Blizzard Items Backend
+def blizzard(size, item, price):
+    # Add Item to Lists
+    item = str(size) + " " + str(item)
+    order_items.append(item)
+    order_prices.append(price)
+    # Respond & Debug
+    print(order_items)
+    print(order_prices)
+
+# Chill Items Backend
+def chill(item, price):
+    # Add Item to Lists
+    order_items.append(item)
+    order_prices.append(price)
+    # Respond & Debug
+    print(order_items)
+    print(order_prices)
+
+# Drink Items Backend
+def drink(size, item, price):
+    # Add Item to Lists
+    item = str(size) + " " + str(item)
+    order_items.append(item)
+    order_prices.append(price)
+    # Respond & Debug
+    print(order_items)
+    print(order_prices)
+
+# Beverage Items Backend
+def beverage(item, price):
+    # Add Item to Lists
+    order_items.append(item)
+    order_prices.append(price)
+    # Respond & Debug
+    print(order_items)
+    print(order_prices)
+
+# Cake Items Backend
+def cake(item, price):
+    # Add Item to Lists
+    order_items.append(item)
+    order_prices.append(price)
+    # Respond & Debug
+    print(order_items)
+    print(order_prices)
+
+def delete_item():
+    num_items = len(order_items)
+    num_prices = len(order_prices)
+    if num_items and num_prices >= 1:
+        # Remove Last Item & Price
+    order_items.pop(-1)
+    order_prices.pop(-1)
+    # Respond & Debug
+    print(order_items)
+    print(order_prices)
+
+def open(type, ammount):
+    global title
+    global value
+    global enter
+    global price
+    if type == "food":
+        order_prices.append(ammount)
+    else:
+        global discount
+        discount = value
+    # Respond & Debug
+    print(order_items)
+    print(order_prices)
+    # Remove Entry Prompt
+    title.destroy()
+    value.destroy()
+    enter.destroy()
+    
+def open_food_ask():
+    global title
+    global value
+    global enter
+    global price
+    price = StringVar()
+    title = Label(window, text='Enter Value to Add:')
+    value = Entry(window, textvariable = price)
+    enter = Button(window, text = 'Accept', command = lambda: open("food", str(value)))
+
+    title.grid(row = 1, column = 1)
+    value.grid(row = 1, column = 1)
+    enter.grid(row = 2, column = 1)
+
 # Builds the window, including buttons and order item list.
 def main():
     # Window Heading
@@ -34,45 +128,45 @@ def main():
 
     # GRILL Buttons
     grill1 = Button(window, text = "Bacon Cheese Burger", bg = 'orange', command = lambda: grill("Bacon Cheese Burger", 9))
-    grill2 = Button(window, text = "Ultimate Burger", bg = 'orange', command = exit)
-    grill3 = Button(window, text = "Cheeseburger", bg = 'orange', command = exit)
-    grill4 = Button(window, text = "Hamburger", bg = 'orange', command = exit)
-    grill5 = Button(window, text = "Crispy Chicken", bg = 'orange', command = exit)
-    grill6 = Button(window, text = "Chicken Wrap", bg = 'orange', command = exit)
+    grill2 = Button(window, text = "Ultimate Burger", bg = 'orange', command = lambda: grill("Ultimate Burger", 6))
+    grill3 = Button(window, text = "Cheeseburger", bg = 'orange', command = lambda: grill("Cheeseburger", 3.5))
+    grill4 = Button(window, text = "Hamburger", bg = 'orange', command = lambda: grill("Hamburger", 3))
+    grill5 = Button(window, text = "Crispy Chicken", bg = 'orange', command = lambda: grill("Crispy Chicken", 7))
+    grill6 = Button(window, text = "Chicken Wrap", bg = 'orange', command = lambda: grill("Chicken Wrap", 3))
 
     # CHILL Buttons
-    chill1 = Button(window, text = "Mini Blizzard", bg = 'dodgerblue', command = exit)
-    chill2 = Button(window, text = "Small Blizzard", bg = 'dodgerblue', command = exit)
-    chill3 = Button(window, text = "Medium Blizzard", bg = 'dodgerblue', command = exit)
-    chill4 = Button(window, text = "Large Blizzard", bg = 'dodgerblue', command = exit)
-    chill5 = Button(window, text = "PB Parfait", bg = 'dodgerblue', command = exit)
-    chill6 = Button(window, text = "Banana Split", bg = 'dodgerblue', command = exit)
+    chill1 = Button(window, text = "Mini Blizzard", bg = 'dodgerblue', command = lambda: blizzard("Mini", "Blizzard", 4.5))
+    chill2 = Button(window, text = "Small Blizzard", bg = 'dodgerblue', command = lambda: blizzard("Small", "Blizzard", 6))
+    chill3 = Button(window, text = "Medium Blizzard", bg = 'dodgerblue', command = lambda: blizzard("Medium", "Blizzard", 8))
+    chill4 = Button(window, text = "Large Blizzard", bg = 'dodgerblue', command = lambda: blizzard("Large", "Blizzard", 9))
+    chill5 = Button(window, text = "PB Parfait", bg = 'dodgerblue', command = lambda: chill("PB Parfait", 6))
+    chill6 = Button(window, text = "Banana Split", bg = 'dodgerblue', command = lambda: chill("Banana Split", 6))
 
     # BEVERAGE Buttons
-    bev1 = Button(window, text = "Small Drink", bg = 'green', command = exit)
-    bev2 = Button(window, text = "Medium Drink", bg = 'green', command = exit)
-    bev3 = Button(window, text = "Large Drink", bg = 'green', command = exit)
-    bev4 = Button(window, text = "Fruit Smoothie", bg = 'green', command = exit)
-    bev5 = Button(window, text = "Orange Julius", bg = 'green', command = exit)
-    bev6 = Button(window, text = "Banana", bg = 'green', command = exit)
+    bev1 = Button(window, text = "Small Drink", bg = 'green', command = lambda: drink("Small", "Pop", 2))
+    bev2 = Button(window, text = "Medium Drink", bg = 'green', command = lambda: drink("Medium", "Pop", 3.5))
+    bev3 = Button(window, text = "Large Drink", bg = 'green', command = lambda: drink("Large", "Pop", 5))
+    bev4 = Button(window, text = "Fruit Smoothie", bg = 'green', command = lambda: beverage("Fruit Smoothie", 4))
+    bev5 = Button(window, text = "Orange Julius", bg = 'green', command = lambda: beverage("Orange Julius", 4))
+    bev6 = Button(window, text = "Banana", bg = 'green', command = lambda: beverage("Banana", 2))
 
     # CAKE Buttons
-    cake1 = Button(window, text = "8\" Blizzard", bg = 'white', command = exit)
-    cake2 = Button(window, text = "10\" Blizzard", bg = 'white', command = exit)
-    cake3 = Button(window, text = "8\" Cake", bg = 'white', command = exit)
-    cake4 = Button(window, text = "10\" Cake", bg = 'white', command = exit)
-    cake5 = Button(window, text = "12pk Dilly Bars", bg = 'white', command = exit)
-    cake6 = Button(window, text = "12pk Sandwiches", bg = 'white', command = exit)
+    cake1 = Button(window, text = "8\" Blizzard", bg = 'white', command = lambda: cake("8\" Blizzard", 33))
+    cake2 = Button(window, text = "10\" Blizzard", bg = 'white', command = lambda: cake("10\" Blizzard", 38))
+    cake3 = Button(window, text = "8\" Cake", bg = 'white', command = lambda: cake("8\" Cake", 23))
+    cake4 = Button(window, text = "10\" Cake", bg = 'white', command = lambda: cake("10\" Cake", 28))
+    cake5 = Button(window, text = "12pk Dilly Bars", bg = 'white', command = lambda: cake("12pk Dilly Bars", 19))
+    cake6 = Button(window, text = "12pk Sandwiches", bg = 'white', command = lambda: cake("12pk Sandwiches", 19))
 
     # Order Items
     order = Frame(window)
     items = Label(order, text = " Order Items Here ", borderwidth = 2, relief = "groove")
     total = Label(order, text = "$ " + "0.00")
     
-    # Edit Buttons
-    delete = Button(window, text = "Delete Item", command = exit)
-    edit = Button(window, text = "Edit Item", command = exit)
-    open_food = Button(window, text = "Open Price", command = exit)
+    # Special Buttons
+    delete = Button(window, text = "Delete Last", command = delete_item)
+    edit = Button(window, text = "Edit Last", command = delete_item)
+    open_food = Button(window, text = "Open Price", command = open_food_ask)
     open_disc = Button(window, text = "Open Discount", command = exit)
     payment = Button(window, text = "Take Payment", command = exit)
 
