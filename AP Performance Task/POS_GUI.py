@@ -23,7 +23,7 @@ def total(items, prices):
     item_list = ""
     for i in range(num_items):
         item_list += order_items[(i + 1)]
-        item_list += 
+        item_list += "\n"
 
 
     total_price = sum(prices)
