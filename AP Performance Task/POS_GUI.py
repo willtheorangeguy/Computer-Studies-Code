@@ -84,6 +84,7 @@ def cake(item, price):
     print(order_items)
     print(order_prices)
 
+# Delete Item in Order List
 def delete_item():
     num_items = len(order_items)
     num_prices = len(order_prices)
@@ -97,6 +98,7 @@ def delete_item():
     print(order_items)
     print(order_prices)
 
+# Backend for Open Food or Open Discount Button
 def open(type, amount):
     global title
     global value
@@ -115,7 +117,8 @@ def open(type, amount):
     title.destroy()
     value.destroy()
     enter.destroy()
-    
+
+# Backend for Open Food Button    
 def open_food_ask():
     global title
     global value
@@ -130,6 +133,7 @@ def open_food_ask():
     value.grid(row = 1, column = 1)
     enter.grid(row = 2, column = 1)
 
+# Backend for Open Discount Button
 def open_disc_ask():
     global title
     global value
