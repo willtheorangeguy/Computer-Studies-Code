@@ -13,20 +13,65 @@ order_items = []
 # List to Hold PRICES
 order_prices = []
 
-# Discount for Open Discount Function
+# Discounts for Open Discount Function and Meal Deal
 discount = 0
+meal_deal = False
 
-# TOTAL FUNCTION NEEDS TO HAVE A COUPON WITH AN IF STATEMENT TO HAVE SELECTION - ITERATION & SELECTION
-def total(items, prices):
-    # Add Items to Item List
-    num_items = len(items)
+# Total Order Price
+total_price = 0
+
+# Total Up Price, Update Order List and Present User with Total
+def total_up(items_list, prices):
+    global items
+    global total
+    global meal_deal
+    global total_price
+    # Make Sure Meal Deal Can Only Be Redeemed Once
+    if not(meal_deal):
+        # Cheeseburger Meal Deal
+        if "Cheeseburger" in order_items:
+            deal = box.askyesno("2 for $5 Deal", "Get 2 Cheeseburgers for $5?")
+            if deal == 1:
+                order_items.append("Cheeseburger")
+                order_prices.append(1.5)
+                print(order_items)
+                print(order_prices)
+                meal_deal = True
+            else:
+                meal_deal = True 
+        # Chicken Wrap Meal Deal
+        elif "Chicken Wrap" in order_items:
+            deal = box.askyesno("2 for $5 Deal", "Get 2 Chicken Wraps for $5?")
+            if deal == 1:
+                order_items.append("Chicken Wrap")
+                order_prices.append(2)
+                print(order_items)
+                print(order_prices)
+                meal_deal = True
+            else:
+                meal_deal = True
+    # Add Items to Item Frame in Window
+    num_items = len(items_list)
     item_list = ""
-    for i in range(num_items):
-        item_list += order_items[(i + 1)]
+    for item in range(num_items):
+        item_list += " "
+        item_list += order_items[(item)]
+        item_list += " "
         item_list += "\n"
+    # Respond & Debug
+    items.configure(text = str(item_list))
+    print(item_list)
+    # Add Up Prices
+    total_price = sum(order_prices)
+    discount_price = (total_price*discount)
+    total_price = total_price-discount_price
+    # Respond & Debug
+    total.configure(text = "$ " + str(total_price))
+    print(total_price)
 
-
-    total_price = sum(prices)
+# Get Final Total to Take Payment
+def final_total(total):
+    box.showinfo("Order Total", "Your order total was: $" + str(total))
 
 # Grill Items Backend
 def grill(item, price):
@@ -34,6 +79,7 @@ def grill(item, price):
     order_items.append(item)
     order_prices.append(price)
     # Respond & Debug
+    total_up(order_items, order_prices)
     print(order_items)
     print(order_prices)
 
@@ -44,6 +90,7 @@ def blizzard(size, item, price):
     order_items.append(item)
     order_prices.append(price)
     # Respond & Debug
+    total_up(order_items, order_prices)
     print(order_items)
     print(order_prices)
 
@@ -53,6 +100,7 @@ def chill(item, price):
     order_items.append(item)
     order_prices.append(price)
     # Respond & Debug
+    total_up(order_items, order_prices)
     print(order_items)
     print(order_prices)
 
@@ -63,6 +111,7 @@ def drink(size, item, price):
     order_items.append(item)
     order_prices.append(price)
     # Respond & Debug
+    total_up(order_items, order_prices)
     print(order_items)
     print(order_prices)
 
@@ -72,6 +121,7 @@ def beverage(item, price):
     order_items.append(item)
     order_prices.append(price)
     # Respond & Debug
+    total_up(order_items, order_prices)
     print(order_items)
     print(order_prices)
 
@@ -81,6 +131,7 @@ def cake(item, price):
     order_items.append(item)
     order_prices.append(price)
     # Respond & Debug
+    total_up(order_items, order_prices)
     print(order_items)
     print(order_prices)
 
@@ -94,62 +145,74 @@ def delete_item():
         order_prices.pop(-1)
     else:
         print("Cannot remove from list.")
-    # Respond & Debug   
+    # Respond & Debug
+    total_up(order_items, order_prices)   
     print(order_items)
     print(order_prices)
 
 # Backend for Open Food or Open Discount Button
 def open(type, amount):
+    global back
     global title
     global value
     global enter
     global price
     if type == "food":
-        order_prices.append(str(amount))
+        order_prices.append(int(amount))
     elif type == "disc":
         global discount
-        discount = str(amount)
-        print(str(discount))
+        discount = (int(amount)/100)
+        print("Discount: " + str(discount))
     # Respond & Debug
+    total_up(order_items, order_prices)
     print(order_items)
     print(order_prices)
     # Remove Entry Prompt
+    back.destroy()
     title.destroy()
     value.destroy()
     enter.destroy()
 
-# Backend for Open Food Button    
+# Open Food Button Backend
 def open_food_ask():
+    global back
     global title
     global value
     global enter
     global price
     price = StringVar()
+    back = Canvas(window, width = 650, height = 280)
     title = Label(window, text='Enter Value to Add:')
     value = Entry(window, textvariable = price)
     enter = Button(window, text = 'Accept', command = lambda: open("food", value.get()))
 
-    title.grid(row = 1, column = 1)
-    value.grid(row = 1, column = 1)
-    enter.grid(row = 2, column = 1)
+    back.grid(row = 1, rowspan = 8, column = 1, columnspan = 5)
+    title.grid(row = 3, column = 3)
+    value.grid(row = 4, column = 3)
+    enter.grid(row = 5, column = 3)
 
-# Backend for Open Discount Button
+# Open Discount Button Backend
 def open_disc_ask():
+    global back
     global title
     global value
     global enter
     global price
     price = StringVar()
+    back = Canvas(window, width = 650, height = 280)
     title = Label(window, text='Enter Price to Discount:')
     value = Entry(window, textvariable = price)
     enter = Button(window, text = 'Accept', command = lambda: open("disc", value.get()))
 
-    title.grid(row = 1, column = 1)
-    value.grid(row = 1, column = 1)
-    enter.grid(row = 2, column = 1)
+    back.grid(row = 1, rowspan = 8, column = 1, columnspan = 5)
+    title.grid(row = 3, column = 3)
+    value.grid(row = 4, column = 3)
+    enter.grid(row = 5, column = 3)
 
 # Builds the window, including buttons and order item list.
 def main():
+    global items
+    global total
     # Window Heading
     window.title("POS GUI")
 
@@ -199,7 +262,7 @@ def main():
     edit = Button(window, text = "Edit Last", command = delete_item)
     open_food = Button(window, text = "Open Price", command = open_food_ask)
     open_disc = Button(window, text = "Open Discount", command = open_disc_ask)
-    payment = Button(window, text = "Take Payment", command = exit)
+    payment = Button(window, text = "Take Payment", command = lambda: final_total(total_price))
 
     # Position on Window
     version.grid(row = 1, column = 1, columnspan = 4, padx = 10)
@@ -248,4 +311,3 @@ def main():
 
 # Build Window
 main()
- 
