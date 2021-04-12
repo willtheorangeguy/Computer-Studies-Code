@@ -1,4 +1,21 @@
-# Using the 'main' function, builds the window including all the necessary features of a GUI based program.
+# Using the 'main' function, builds the window including all the necessary buttons of a GUI based program.
+# Also creates all the necessary functions to run a functioning POS System.
+
+# Sources:
+"""
+- Menu items copyright American Dairy Queen.
+- Button color names from http://www.tcl.tk/man/tcl8.6/TkCmd/colors.htm.
+- 'import tkinter.messagebox as box' from Coding for Beginners by Mike McGrath.
+- 'box.askyesno' from Coding for Beginners by Mike McGrath.
+- 'for item in range(num_items)' from https://stackoverflow.com/a/12171382/6806860.
+- 'order_items.pop(-1)' & 'order_prices.pop(-1)' from https://stackoverflow.com/a/18173414/6806860.
+- 'width = window.winfo_width(), height = window.winfo_height()' from https://stackoverflow.com/a/4065851/6806860.
+- 'lambda:' from https://stackoverflow.com/a/890188/6806860. 
+- 'value.get())' from https://stackoverflow.com/a/52792094/6806860 & https://stackoverflow.com/a/50438744/6806860. 
+- 'back.destroy()' from https://stackoverflow.com/q/21634906/6806860. 
+- 'items.configure(text = str(item_list))' & 'total.configure(text = "$ " + str(total_price))' from https://stackoverflow.com/a/56929450/6806860. 
+- 'pady = (20, 2)' from https://stackoverflow.com/a/4178084/6806860. 
+"""
 
 # Import 
 import time
@@ -38,7 +55,7 @@ def total_up(items_list, prices):
                 print(order_prices)
                 meal_deal = True
             else:
-                meal_deal = True 
+                meal_deal = False 
         # Chicken Wrap Meal Deal
         elif "Chicken Wrap" in order_items:
             deal = box.askyesno("2 for $5 Deal", "Get 2 Chicken Wraps for $5?")
@@ -49,7 +66,7 @@ def total_up(items_list, prices):
                 print(order_prices)
                 meal_deal = True
             else:
-                meal_deal = True
+                meal_deal = False
     # Add Items to Item Frame in Window
     num_items = len(items_list)
     item_list = ""
@@ -158,6 +175,7 @@ def open(type, amount):
     global enter
     global price
     if type == "food":
+        order_items.append("Open Food ($" + str(amount) + ")")
         order_prices.append(int(amount))
     elif type == "disc":
         global discount
@@ -181,7 +199,7 @@ def open_food_ask():
     global enter
     global price
     price = StringVar()
-    back = Canvas(window, width = 650, height = 280)
+    back = Canvas(window, width = window.winfo_width(), height = window.winfo_height())
     title = Label(window, text='Enter Value to Add:')
     value = Entry(window, textvariable = price)
     enter = Button(window, text = 'Accept', command = lambda: open("food", value.get()))
@@ -199,7 +217,7 @@ def open_disc_ask():
     global enter
     global price
     price = StringVar()
-    back = Canvas(window, width = 650, height = 280)
+    back = Canvas(window, width = window.winfo_width(), height = window.winfo_height())
     title = Label(window, text='Enter Price to Discount:')
     value = Entry(window, textvariable = price)
     enter = Button(window, text = 'Accept', command = lambda: open("disc", value.get()))
@@ -255,7 +273,7 @@ def main():
     # Order Items
     order = Frame(window)
     items = Label(order, text = " Order Items Here ", borderwidth = 2, relief = "groove")
-    total = Label(order, text = "$ " + "0.00")
+    total = Label(order, text = "$" + "0.00")
     
     # Special Buttons
     delete = Button(window, text = "Delete Last", command = delete_item)
