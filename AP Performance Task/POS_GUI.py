@@ -47,7 +47,7 @@ def total_up(items_list, prices):
     # Make Sure Meal Deal Can Only Be Redeemed Once
     if not(meal_deal):
         # Cheeseburger Meal Deal
-        if "Cheeseburger" in order_items:
+        if "Cheeseburger" in items_list:
             # Ask to Save Money
             deal = box.askyesno("2 for $5 Deal", "Get 2 Cheeseburgers for $5?")
             # Save Money if Yes
@@ -61,7 +61,7 @@ def total_up(items_list, prices):
             else:
                 meal_deal = False 
         # Chicken Wrap Meal Deal
-        elif "Chicken Wrap" in order_items:
+        elif "Chicken Wrap" in items_list:
             # Ask to Save Money
             deal = box.askyesno("2 for $5 Deal", "Get 2 Chicken Wraps for $5?")
             # Save Money if Yes
@@ -79,14 +79,14 @@ def total_up(items_list, prices):
     item_list = ""
     for item in range(num_items):
         item_list += " "
-        item_list += order_items[(item)]
+        item_list += items_list[(item)]
         item_list += " "
         item_list += "\n"
     # Respond & Debug
     items.configure(text = str(item_list))
     print(item_list)
     # Add Up Prices
-    total_price = sum(order_prices)
+    total_price = sum(prices)
     discount_price = (total_price*discount)
     total_price = total_price-discount_price
     # Respond & Debug
