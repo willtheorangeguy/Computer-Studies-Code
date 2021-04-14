@@ -52,10 +52,10 @@ def total_up(items_list, prices):
             deal = box.askyesno("2 for $5 Deal", "Get 2 Cheeseburgers for $5?")
             # Save Money if Yes
             if deal == 1:
-                order_items.append("Cheeseburger")
-                order_prices.append(1.5)
-                print(order_items)
-                print(order_prices)
+                items_list.append("Cheeseburger")
+                prices.append(1.5)
+                print(items_list)
+                print(prices)
                 meal_deal = True
             # Don't Save Money if No
             else:
@@ -66,10 +66,10 @@ def total_up(items_list, prices):
             deal = box.askyesno("2 for $5 Deal", "Get 2 Chicken Wraps for $5?")
             # Save Money if Yes
             if deal == 1:
-                order_items.append("Chicken Wrap")
-                order_prices.append(2)
-                print(order_items)
-                print(order_prices)
+                items_list.append("Chicken Wrap")
+                prices.append(2)
+                print(items_list)
+                print(prices)
                 meal_deal = True
             # Don't Save Money if No
             else:
