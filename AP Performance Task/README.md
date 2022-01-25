@@ -7,6 +7,6 @@
     - There is lots of repetition in the code, which should make it easy to finish in 12 hours.
 - [ ] ~~BMI Face Detection Algorithim~~
     - ~~Uses AI to detect the height and weight of a person from a picture.~~
-    - From that information uses math to calculate the BMI.
-    - Could be too resource heavy for consumer dekstop PCs.
+    - ~~From that information uses math to calculate the BMI.~~
+    - ~~Could be too resource heavy for consumer dekstop PCs.~~
     - ~~Raiting system could be implemented, but it may be too anti-inclusive.~~
