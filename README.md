@@ -1,13 +1,11 @@
 <!-- Logo -->
 <h1 align="center">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Advanced_Placement_logo_-_College_Board.svg/2560px-Advanced_Placement_logo_-_College_Board.svg.png" height="250px" width="400px" alt="Computer Studies Code">
-  <br>
   Computer Studies Code
   <br>
 </h1>
 
 <!-- Copy -->
-<h4 align="center">A backup of code for most day's AP Computer Studies projects.</h4>
+<h4 align="center">An archive of code for most day's AP Computer Studies projects.</h4>
 
 <!-- Badges -->
 <div align="center">
@@ -50,7 +48,7 @@ Scenes from _Tell a Story_:
 
 ## Download
 
-You can **[download](https://github.com/willtheorangeguy/Computer-Studies-Code/releases/latest) the source code and projects** to run the scripts from the command line on Windows, macOS and Linux. **This will require [Python](https://www.python.org/downloads/).**
+You can **[download](https://github.com/willtheorangeguy/Computer-Studies-Code/archive/refs/heads/main.zip) the source code and projects** to run the scripts from the command line on Windows, macOS and Linux. **This will require [Python](https://www.python.org/downloads/)**, and for some projects, a [CodeHS](https://codehs.com/) account.
 
 ## Credits
 
